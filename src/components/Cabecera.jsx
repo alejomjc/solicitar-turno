@@ -21,6 +21,7 @@ const styles = {
         boxShadow: "0px 3px 6px #00000029",
         borderRadius: "3px 3px 63px 3px",
         opacity: "1",
+        position: "absolute"
     },
     logo:{
         position: "fixed",
