@@ -9,14 +9,6 @@ import ListItemText from "@mui/material/ListItemText";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
 import {Button} from "@mui/material";
 
-const theme = createTheme({
-    palette:{
-        primary:{
-           main: '#3F3F41'
-        }
-    }
-})
-
 const styles = {
     div: {
         margin: "100px"
@@ -87,44 +79,42 @@ const styles = {
 export default class Home extends Component{
     render() {
         return (
-            <ThemeProvider theme={theme}>
-                <div>
-                    <Cabecera/>
-                    <div style={styles.div}>
-                    <div style={styles.campoTexto}>
-                        <b style={styles.texto1}>Solicita tu turno virtual</b>{"\n"}
-                        <p style={styles.texto2}>y realiza todos tus tramites sin filas.</p>
-                    </div>
-
-                    <img style={styles.header} src={index} />
-                    <img style={styles.netux} src={netux} />
-
-                    <b style={styles.texto}>Como solicitar tu turno</b>
-
-                    <List sx={styles.lista} component="nav" aria-label="mailbox folders">
-                        <ListItem>
-                            <div style={styles.icono}>1</div>
-                            <ListItemText primary="Selecciona la oficina mas cercana." />
-                        </ListItem>
-                        <ListItem>
-                            <div style={styles.icono}>2</div>
-                            <ListItemText primary="Ingresa tus datos." />
-                        </ListItem>
-                        <ListItem >
-                            <div style={styles.icono}>3</div>
-                            <ListItemText primary="Selecciona el servicio." />
-                        </ListItem>
-                        <ListItem >
-                            <div style={styles.icono}>4</div>
-                            <ListItemText primary="Verifica tu información." />
-                        </ListItem>
-                    </List>
-                    <Button style={styles.boton} variant="contained" color="primary">
-                        Solicitar turno
-                    </Button>
-                    </div>
+            <div>
+                <Cabecera/>
+                <div style={styles.div}>
+                <div style={styles.campoTexto}>
+                    <b style={styles.texto1}>Solicita tu turno virtual</b>
+                    <p style={styles.texto2}>y realiza todos tus tramites sin filas.</p>
                 </div>
-            </ThemeProvider>
+
+                <img style={styles.header} src={index} />
+                <img style={styles.netux} src={netux} />
+
+                <b style={styles.texto}>Como solicitar tu turno</b>
+
+                <List sx={styles.lista} component="nav" aria-label="mailbox folders">
+                    <ListItem>
+                        <div style={styles.icono}>1</div>
+                        <ListItemText primary="Selecciona la oficina mas cercana." />
+                    </ListItem>
+                    <ListItem>
+                        <div style={styles.icono}>2</div>
+                        <ListItemText primary="Ingresa tus datos." />
+                    </ListItem>
+                    <ListItem >
+                        <div style={styles.icono}>3</div>
+                        <ListItemText primary="Selecciona el servicio." />
+                    </ListItem>
+                    <ListItem >
+                        <div style={styles.icono}>4</div>
+                        <ListItemText primary="Verifica tu información." />
+                    </ListItem>
+                </List>
+                <Button style={styles.boton} variant="contained" color="primary">
+                    Solicitar turno
+                </Button>
+                </div>
+            </div>
         )
     }
 }
