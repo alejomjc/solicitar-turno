@@ -1,9 +1,9 @@
 import './App.css';
-import Cabecera from "./components/Cabecera";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
-      <Cabecera/>
+      <Home/>
   );
 }
 
