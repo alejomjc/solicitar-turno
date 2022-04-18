@@ -66,7 +66,7 @@ const styles = {
     },
 }
 
-export default function AlignItemsList() {
+export default function Oficinas() {
     return (
         <div>
             <header style={styles.header}>
