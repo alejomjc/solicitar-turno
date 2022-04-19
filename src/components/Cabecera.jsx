@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cruz_verde from "../img/cruz_verde.png";
+import {Link} from "react-router-dom";
 
 const styles = {
   header: {
@@ -36,9 +37,11 @@ const styles = {
 export default class Cabecera extends Component {
   render() {
     return (
-      <div style={styles.divLogo}>
-        <img src={cruz_verde} style={styles.logo} alt="logo" />
-      </div>
+        <Link to="/">
+          <div style={styles.divLogo}>
+            <img src={cruz_verde} style={styles.logo} alt="logo" />
+          </div>
+        </Link>
     );
   }
 }
