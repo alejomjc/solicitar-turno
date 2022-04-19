@@ -20,6 +20,7 @@ const styles = {
     bottom: "25%",
     width: "800px",
     right: "2%",
+    zIndex: "-1",
   },
   netux: {
     position: "absolute",
@@ -112,10 +113,12 @@ export default class Home extends Component {
               <ListItemText primary="Verifica tu información." />
             </ListItem>
           </List>
-          <Button style={styles.boton} variant="contained" color="primary">
-            Solicitar turno
-          </Button>
-          <Link to="/formulario">ir a Formulario</Link>
+
+          <Link to="/formulario">
+            <Button style={styles.boton} variant="contained" color="primary">
+              Solicitar turno
+            </Button>
+          </Link>
         </div>
       </div>
     );

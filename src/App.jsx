@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import Home from "./components/Home/Home";
 import Oficinas from "./components/Oficinas/Oficinas";
 import Formulario from "./components/Formulario/Formulario";
@@ -15,12 +16,16 @@ const theme = createTheme({
 });
 
 function App() {
+  const [paso, setPaso] = useState(0);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="////formulario" element={<Formulario />} />
+          <Route
+            path="/formulario"
+            element={<Formulario setPaso={setPaso} paso={paso} />}
+          />
           {/*<Oficinas/>*/}
           {/* <Formulario/> */}
         </Routes>
