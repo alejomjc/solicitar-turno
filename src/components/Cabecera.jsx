@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import cruz_verde from "../img/cruz_verde.png";
-import {Link} from "react-router-dom";
+import { motion } from "framer-motion";
+import { logoCabeceraVariants } from "../styles/framerVariants";
+import { Link } from "react-router-dom";
 
 const styles = {
   header: {
@@ -37,11 +39,17 @@ const styles = {
 export default class Cabecera extends Component {
   render() {
     return (
+      <motion.div
+        variants={logoCabeceraVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <Link to="/">
           <div style={styles.divLogo}>
             <img src={cruz_verde} style={styles.logo} alt="logo" />
           </div>
         </Link>
+      </motion.div>
     );
   }
 }

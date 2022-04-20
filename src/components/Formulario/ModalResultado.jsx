@@ -18,7 +18,7 @@ const style = {
 };
 
 export default function NestedModal({ dataForm }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -28,7 +28,8 @@ export default function NestedModal({ dataForm }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Ver resultados</Button>
+      <Button onClick={handleOpen}>Generar PDF</Button>
+      {/* <MiTurno /> */}
       <Modal
         open={open}
         onClose={handleClose}
