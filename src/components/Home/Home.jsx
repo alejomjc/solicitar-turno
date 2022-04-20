@@ -8,8 +8,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { Button } from "@mui/material";
+import { imagenVariants, itemVariants } from "../../styles/framerVariants";
 
 const styles = {
   div: {
@@ -78,6 +80,7 @@ const styles = {
     height: "40px",
   },
 };
+const ListItemMotion = motion(ListItem);
 
 export default class Home extends Component {
   render() {
@@ -89,35 +92,70 @@ export default class Home extends Component {
             <b style={styles.texto1}>Solicita tu turno virtual</b>
             <p style={styles.texto2}>y realiza todos tus tramites sin filas.</p>
           </div>
+          <div>
+            <motion.img
+              variants={imagenVariants}
+              initial="hidden"
+              animate="visible"
+              style={styles.header}
+              src={index}
+            />
+          </div>
 
-          <img style={styles.header} src={index} />
           <img style={styles.netux} src={netux} />
 
           <b style={styles.texto}>Como solicitar tu turno</b>
 
           <List sx={styles.lista} component="nav" aria-label="mailbox folders">
-            <ListItem>
+            <ListItemMotion
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 1 }}
+            >
               <div style={styles.icono}>1</div>
               <ListItemText primary="Selecciona la oficina mas cercana." />
-            </ListItem>
-            <ListItem>
+            </ListItemMotion>
+            <ListItemMotion
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 2 }}
+            >
               <div style={styles.icono}>2</div>
               <ListItemText primary="Ingresa tus datos." />
-            </ListItem>
-            <ListItem>
+            </ListItemMotion>
+            <ListItemMotion
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 3 }}
+            >
               <div style={styles.icono}>3</div>
               <ListItemText primary="Selecciona el servicio." />
-            </ListItem>
-            <ListItem>
+            </ListItemMotion>
+            <ListItemMotion
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 4 }}
+            >
               <div style={styles.icono}>4</div>
               <ListItemText primary="Verifica tu información." />
-            </ListItem>
+            </ListItemMotion>
           </List>
 
           <Link to="/formulario">
-            <Button style={styles.boton} variant="contained" color="primary">
-              Solicitar turno
-            </Button>
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              custom={{ delay: 5 }}
+            >
+              <Button style={styles.boton} variant="contained" color="primary">
+                Solicitar turno
+              </Button>
+            </motion.div>
           </Link>
         </div>
       </div>

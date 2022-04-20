@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Cabecera from "../Cabecera";
 import { Button, Radio } from "@mui/material";
+import netux from "../../img/netux.png";
 import styled from "styled-components";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -14,6 +15,9 @@ import FormLabel from "@mui/material/FormLabel";
 import HeaderPag from "../HeaderPag";
 import mapa from "../../img/mapa.png";
 import MapGeolocalizacion from "../MapGeolocalizacion/Map";
+import { motion } from "framer-motion";
+import { itemVariants } from "../../styles/framerVariants";
+import Seacher from "./Search";
 
 const styles = {
   header: {
@@ -71,17 +75,71 @@ const DivContainerOficinas = styled.div`
   grid-template-columns: 35% 65%;
 `;
 
+const ListItemMotion = motion(ListItem);
+const initialState = [
+  {
+    sede: 1,
+    direccion: "Cra. 16 ##1426, Arauca",
+    lat: 7.087673338046337,
+    lng: -70.7598964403235,
+    horario: "8am-5pm",
+    nombre: "sede 1",
+  },
+  {
+    sede: 2,
+    direccion: "Cra. 20 #25-45, Arauca",
+    lat: 7.088439910733274,
+    lng: -70.7598964403295,
+    horario: "8am-5pm",
+    nombre: "sede 2",
+  },
+  {
+    sede: 3,
+    direccion: "Cra. 19 #24-45, Arauca",
+    nombre: "sede 3",
+    lat: 7.086310539009829,
+    lng: -70.76040364631015,
+    horario: "8am-5pm",
+  },
+  {
+    sede: 4,
+    nombre: "sede 4",
+    direccion: "Cra. 21 #20-45, Arauca",
+    lat: 7.0868215891207775,
+    lng: -70.75555421241123,
+    horario: "8am-5pm",
+  },
+  {
+    sede: 5,
+    nombre: "sede 5",
+    direccion: "Cra. 18 #20-45, Arauca",
+    lat: 7.088439910733274,
+    lng: -70.75503922828037,
+    horario: "8am-5pm",
+  },
+];
 export default function Oficinas({ setPaso, paso, register }) {
-  const array = [];
-  const initialState = [
-    {
-      direccion: "Calle 24 #3-32",
-      lat: 7.087673338046337,
-      lng: -70.7598964403235,
-      horario: "8am-5pm",
+  const [markers, setMarkers] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+  const handleSearch = useCallback(
+    (evento) => {
+      setBusqueda(evento.target.value);
     },
-  ];
-  const [markers, setMarkers] = useState(initialState);
+    [busqueda]
+  );
+  const filteredProducts = useMemo(
+    () =>
+      initialState.filter((sede) => {
+        const querySede = sede.nombre
+          .toLowerCase()
+          .includes(busqueda.toLowerCase());
+        if (querySede) {
+          return querySede;
+        }
+        return querySede;
+      }),
+    [initialState, busqueda]
+  );
 
   return (
     <DivContainerOficinas>
@@ -107,164 +165,55 @@ export default function Oficinas({ setPaso, paso, register }) {
             }}
           >
             <FormControl>
+              <Seacher handleSearch={handleSearch} busqueda={busqueda} />
               <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="female"
                 name="radio-buttons-group"
-                {...register("oficinas")}
+                {...register("sede")}
               >
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede1"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 1"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede2"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 2"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede3"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 3"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede4"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 4"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede5"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 5"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                  <FormControlLabel
-                    value="sede6"
-                    control={<Radio />}
-                    label=""
-                  />
-                  <ListItemText
-                    primary="Sede 6"
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          Calle 1 # 20 - 35
-                        </Typography>
-                        <br />
-                        {"Horario: 7:00 Am - 5:00 Pm"}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
+                {initialState.map((item, index) => {
+                  const objetoValue = {
+                    sede: item.sede,
+                    direccion: item.direccion,
+                  };
+                  const objetoValueString = JSON.stringify(objetoValue);
+                  return (
+                    <ListItem
+                      alignItems="flex-start"
+                      key={`${item.sede}${index}`}
+                      variants={itemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      custom={{ delay: index }}
+                    >
+                      <FormControlLabel
+                        value={objetoValueString}
+                        control={<Radio />}
+                        label=""
+                      />
+                      <ListItemText
+                        primary={`Sede ${item.sede}`}
+                        secondary={
+                          <>
+                            <Typography
+                              sx={{ display: "inline" }}
+                              component="span"
+                              variant="body2"
+                              color="text.primary"
+                            >
+                              {item.direccion}
+                            </Typography>
+                            <br />
+                            {item.horario}
+                          </>
+                        }
+                      />
+                      <Divider variant="inset" component="div" />
+                    </ListItem>
+                  );
+                })}
               </RadioGroup>
             </FormControl>
           </List>
@@ -280,7 +229,11 @@ export default function Oficinas({ setPaso, paso, register }) {
         </div>
       </header>
       <div>
-        <MapGeolocalizacion markers={markers} setMarkers={setMarkers} />
+        <MapGeolocalizacion
+          markers={markers}
+          setMarkers={setMarkers}
+          initialState={initialState}
+        />
       </div>
       {/* <img style={styles.mapa} src={mapa} /> */}
     </DivContainerOficinas>

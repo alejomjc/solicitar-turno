@@ -2,15 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 export default function FormPropsTextFields({ register }) {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
-  };
   return (
     <Box
       component="div"
@@ -21,7 +16,7 @@ export default function FormPropsTextFields({ register }) {
       autoComplete="off"
     >
       <div>
-        <div>
+        <div style={{ width: "90%", margin: "0 auto" }}>
           <InputLabel id="demo-simple-select-label">
             Tipo de Documento
           </InputLabel>
@@ -30,6 +25,8 @@ export default function FormPropsTextFields({ register }) {
             id="demo-simple-select"
             value="cc"
             label="Tipo de Documento"
+            fullWidth
+            variant="standard"
             // onChange={handleChange}
             {...register("tipoDocumento", { required: true })}
           >
@@ -38,31 +35,37 @@ export default function FormPropsTextFields({ register }) {
             <MenuItem value="ti">Tarjeta de Identidad</MenuItem>
           </Select>
         </div>
-        <div>
+        <div style={{ width: "90%", margin: "0 auto" }}>
           <TextField
             required
+            variant="standard"
+            type="number"
             id="outlined-required"
-            label="Primer"
-            defaultValue="Hello World"
-            {...register("numeroDocumento", { required: true })}
+            label="Numero de documento"
+            fullWidth
+            {...register("cedula", { required: true })}
           />
         </div>
 
         <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          {...register("password", { required: true })}
+          label="Primer nombre"
+          type="text"
+          {...register("primerNombre", { required: true })}
         />
         <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          {...register("input3", { required: true })}
+          label="Primer apellido"
+          type="text"
+          {...register("segundoNombre", { required: true })}
+        />
+        <TextField
+          label="Primer apellido"
+          type="text"
+          {...register("primerApellido", { required: true })}
+        />
+        <TextField
+          label="Segundo apellido"
+          type="text"
+          {...register("segundoApellido")}
         />
       </div>
     </Box>
