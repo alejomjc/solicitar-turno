@@ -11,13 +11,6 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-const aguaMicrofinanzas =
-  "https://res.cloudinary.com/microfinanzasalcaravanarauca/image/upload/v1641261565/agua_Microfinanzas_Logo_aee2efe4a4.jpg";
-
-// const footerPdf =
-//   'https://res.cloudinary.com/microfinanzasalcaravanarauca/image/upload/v1642076559/footer3_6268cca330.png';
-const footerPdf =
-  "https://res.cloudinary.com/microfinanzasalcaravanarauca/image/upload/v1642076559/footer3_6268cca330.png";
 const encabezadoPdf =
   "https://res.cloudinary.com/microfinanzasalcaravanarauca/image/upload/v1641594699/encabezado_6f769b54a9.png";
 Font.register({

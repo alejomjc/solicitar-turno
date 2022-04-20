@@ -6,7 +6,7 @@ import netux from "../../img/netux.png";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+// import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -102,7 +102,7 @@ export default class Home extends Component {
             />
           </div>
 
-          <img style={styles.netux} src={netux} />
+          <img style={styles.netux} src={netux} alt="asdf" />
 
           <b style={styles.texto}>Como solicitar tu turno</b>
 

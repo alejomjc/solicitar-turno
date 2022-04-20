@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Home from "./components/Home/Home";
-import Oficinas from "./components/Oficinas/Oficinas";
+// import Oficinas from "./components/Oficinas/Oficinas";
 import Formulario from "./components/Formulario/Formulario";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";

@@ -1,21 +1,16 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import Cabecera from "../Cabecera";
 import { Button, Radio } from "@mui/material";
-import netux from "../../img/netux.png";
 import styled from "styled-components";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import HeaderPag from "../HeaderPag";
-import mapa from "../../img/mapa.png";
 import MapGeolocalizacion from "../MapGeolocalizacion/Map";
-import { motion } from "framer-motion";
 import { itemVariants } from "../../styles/framerVariants";
 import Seacher from "./Search";
 
@@ -75,7 +70,6 @@ const DivContainerOficinas = styled.div`
   grid-template-columns: 35% 65%;
 `;
 
-const ListItemMotion = motion(ListItem);
 const initialState = [
   {
     sede: 1,
@@ -121,25 +115,22 @@ const initialState = [
 export default function Oficinas({ setPaso, paso, register }) {
   const [markers, setMarkers] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-  const handleSearch = useCallback(
-    (evento) => {
-      setBusqueda(evento.target.value);
-    },
-    [busqueda]
-  );
-  const filteredProducts = useMemo(
-    () =>
-      initialState.filter((sede) => {
-        const querySede = sede.nombre
-          .toLowerCase()
-          .includes(busqueda.toLowerCase());
-        if (querySede) {
-          return querySede;
-        }
-        return querySede;
-      }),
-    [initialState, busqueda]
-  );
+  const handleSearch = useCallback((evento) => {
+    setBusqueda(evento.target.value);
+  }, []);
+  // const filteredProducts = useMemo(
+  //   () =>
+  //     initialState.filter((sede) => {
+  //       const querySede = sede.nombre
+  //         .toLowerCase()
+  //         .includes(busqueda.toLowerCase());
+  //       if (querySede) {
+  //         return querySede;
+  //       }
+  //       return querySede;
+  //     }),
+  //   [initialState, busqueda]
+  // );
 
   return (
     <DivContainerOficinas>

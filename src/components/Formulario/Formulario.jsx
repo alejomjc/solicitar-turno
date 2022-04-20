@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
-import Cabecera from "../Cabecera";
+// import List from "@mui/material/List";
+// import ListItem from "@mui/material/ListItem";
+// import Divider from "@mui/material/Divider";
+// import ListItemText from "@mui/material/ListItemText";
+// import Typography from "@mui/material/Typography";
+// import Cabecera from "../Cabecera";
 import styled from "styled-components";
-import { Button, Radio } from "@mui/material";
-import netux from "../../img/netux.png";
+import { Button } from "@mui/material";
+// import netux from "../../img/netux.png";
 
 import index from "../../img/index.png";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import HeaderPag from "../HeaderPag";
-import grupo from "../../img/grupo.png";
+// import RadioGroup from "@mui/material/RadioGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormControl from "@mui/material/FormControl";
+// import FormLabel from "@mui/material/FormLabel";
+// import HeaderPag from "../HeaderPag";
+// import grupo from "../../img/grupo.png";
 import OnlyFrm from "./OnlyFrm";
 
 import HeaderPag2 from "../HeaderPag2";
 import Oficinas from "../Oficinas/Oficinas";
-import NestedModal from "./ModalResultado";
+// import NestedModal from "./ModalResultado";
 import { useForm } from "react-hook-form";
 
 const styles = {
@@ -79,12 +79,7 @@ const DivContainerOficinas = styled.div`
 
 export default function Formulario({ setPaso, paso }) {
   const [dataForm, setDataForm] = useState(null);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     setDataForm(data);
@@ -108,7 +103,7 @@ export default function Formulario({ setPaso, paso }) {
     xhr.responseType = "arraybuffer";
 
     xhr.onload = function (e) {
-      if (this.status == 200) {
+      if (this.status === 200) {
         //console.log('Conversion to PDF completed ok.');
 
         var blob = new Blob([this.response], { type: "application/pdf" });

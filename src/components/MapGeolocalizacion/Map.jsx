@@ -43,7 +43,7 @@ const MapGeolocalizacion = (props) => {
     if (isLoaded) {
       setMarkers(initialState);
     }
-  }, [isLoaded]);
+  }, [initialState, isLoaded, setMarkers]);
 
   if (loadError) return <p>Error al cargar mapa</p>;
   if (!isLoaded) return <p>Loading...</p>;
