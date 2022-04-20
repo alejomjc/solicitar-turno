@@ -5,7 +5,8 @@ import Home from "./components/Home/Home";
 import Formulario from "./components/Formulario/Formulario";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Confirmacion from "./components/Confirmacion";
 
 const theme = createTheme({
   palette: {
@@ -17,19 +18,26 @@ const theme = createTheme({
 
 function App() {
   const [paso, setPaso] = useState(0);
+  const [estado, setEstado] = useState(null);
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
             path="/formulario"
-            element={<Formulario setPaso={setPaso} paso={paso} />}
+            element={
+              <Formulario setPaso={setPaso} paso={paso} setEstado={setEstado} />
+            }
+          />
+          <Route
+            path="/confirmacion"
+            element={<Confirmacion estado={estado} />}
           />
           {/*<Oficinas/>*/}
           {/* <Formulario/> */}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
